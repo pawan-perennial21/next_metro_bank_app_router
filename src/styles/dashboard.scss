@@ -1,0 +1,30 @@
+.dashboard-container {
+  margin: calc(72px + 32px) 24px 24px 24px;
+  @include flex-item(column, flex-start, normal, 12px);
+
+  .dashboard-tabs {
+    width: 100%;
+    height: 60px;
+    border-radius: 12px;
+    background: $white;
+    box-shadow: $card-box-shadow;
+    @include flex-item(row, flex-start, center);
+  }
+
+  .summary-tab,
+  .details-tab {
+    padding: 18px 24px;
+    border-right: 1px solid $border-clr-2;
+    cursor: pointer;
+  }
+
+  .active-tab {
+    border-top: 3px solid $primary-light;
+    box-sizing: border-box;
+    font-weight: 700;
+  }
+
+  .summary-tab.active-tab {
+    border-top-left-radius: 12px;
+  }
+}

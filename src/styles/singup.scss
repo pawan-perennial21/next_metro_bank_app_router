@@ -1,0 +1,34 @@
+.auth-container {
+  @include flex-item(row, space-between, normal);
+  width: 100%;
+  height: 100vh;
+
+  .auth-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // flex-grow: 1;
+    // flex-basis: 50%;
+    width: 50%;
+    background-color: $primary-color;
+    height: inherit;
+  }
+  .auth-image {
+    flex-grow: 1;
+    flex-basis: 50%;
+    background-color: $primary-color;
+    height: inherit;
+  }
+  .sign-up-container,
+  .login-container {
+    flex-grow: 1;
+    flex-basis: 50%;
+    @include flex-item(row, center, center);
+    height: inherit;
+  }
+
+  form {
+    @include flex-item(column, center, flex-start, 24px);
+    margin: 32px 0;
+  }
+}

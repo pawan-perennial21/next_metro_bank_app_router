@@ -1,0 +1,31 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: $text-clr;
+}
+
+body {
+  background-color: $border-clr-2;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+}
+
+.a-text {
+  color: #1a1a1a;
+}
+
+.a-line {
+  text-decoration: underline;
+}
+
+.text-uppercase {
+  text-transform: capitalize;
+}

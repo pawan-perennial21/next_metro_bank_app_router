@@ -1,0 +1,6 @@
+.footer {
+  height: 38px;
+  width: 100%;
+  padding: 11px 0;
+  @include flex-item(row,center,center);
+}

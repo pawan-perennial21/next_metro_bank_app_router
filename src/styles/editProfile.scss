@@ -1,0 +1,15 @@
+.edit-profile {
+  margin: calc(72px + 32px) 24px 24px 24px;
+
+  .page-title {
+    margin-bottom: 24px;
+  }
+
+  .update-form {
+    border-radius: 12px;
+    background: $white;
+    box-shadow: $paper-shadow;
+    padding: 24px;
+    @include flex-item(column,normal,normal,24px);
+  }
+}

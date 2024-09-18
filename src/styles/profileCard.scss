@@ -1,0 +1,40 @@
+.dropdown-content {
+  width: 361px;
+  height: 368px;
+  position: absolute;
+  top: 100%;
+  right: 24px;
+  z-index: 1;
+  border-radius: 0px 0px 12px 12px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  box-shadow: 0px 1px 25px 0px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  .dropdown-lists {
+    @include flex-item(column, flex-start, flex-start);
+    list-style: none;
+    .dropdown-value {
+      width: 100%;
+      padding: 16px 0;
+      border-bottom: 1px solid $secondary-white;
+      gap: 0;
+
+      &:last-child {
+        border: none;
+      }
+    }
+    .dropdown-value-profile {
+      width: 100%;
+      @include flex-item(column, flex-start, flex-start);
+      border-bottom: 1px solid $secondary-white;
+      padding-bottom: 24px;
+      gap: 0;
+
+      .profile-pic {
+        width: 100%;
+        @include flex-item(row, center, normal);
+        padding-bottom: 24px;
+      }
+    }
+  }
+}

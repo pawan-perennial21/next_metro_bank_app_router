@@ -1,0 +1,40 @@
+.navbar-container {
+  width: 100%;
+  @include flex-item(row, space-between, center);
+  height: 72px;
+  padding: 0px 20px;
+  background: $white;
+  box-shadow: $card-box-shadow;
+  position: fixed;
+  top: 0;
+
+  .flex {
+    @include flex-item(row, space-between, normal);
+  }
+
+  .navbar-title {
+    @include flex-item(row, space-between, normal, 8px);
+
+    &::after {
+      width: 1px;
+      height: 30px;
+      content: '';
+      background: $tertiary-white;
+      margin-left: 24px;
+    }
+  }
+
+  .navbar-company-name {
+    margin-left: 32px;
+  }
+
+  .navbar-ul {
+    list-style: none;
+    @include flex-item(row, normal, center, 24px);
+
+    .navbar-arrow-down {
+      cursor: pointer;
+      margin-left: 4px;
+    }
+  }
+}

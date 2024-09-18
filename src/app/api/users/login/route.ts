@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 // Local files
 import { ErrorResponse, SuccessResponse } from '../utils/Response';
 import User from '@/models/userModel';
-import { connect } from '@/db/dbConfig';
+import { connect } from '@/config/db';
 import MyCustomError from '../utils/MyCustomError';
 
 connect();
@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
     }
 
     const user = await User.findOne({ email });
+    console.log({ user });
 
     if (!user) {
       return ErrorResponse("User doesn't exists ");
@@ -35,7 +36,7 @@ export async function POST(request: NextRequest) {
       fullName: user.fullName,
       email: user.email,
     };
-    const token = jwt.sign(tokenData, process.env.SECRETE_TOKEN!, {
+    const token = jwt.sign(tokenData, process.env.SECRET_TOKEN!, {
       expiresIn: '1h',
     });
 

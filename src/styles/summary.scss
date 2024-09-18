@@ -1,0 +1,29 @@
+.summary-services {
+  .dashboard-summary {
+    width: 100%;
+    @include flex-item(column,normal,normal,24px);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid $card-border;
+    background: $card-bg;
+    box-shadow: $card-box-shadow;
+  }
+
+  .dashboard-services {
+    @include flex-item(column,normal,normal,24px);
+    margin-top: 20px;
+    &-title {
+      display: flex;
+      gap: 8px;
+      margin-bottom: -12px;
+    }
+  }
+
+  .summary-details {
+    display: flex;
+    gap: 24px;
+    .summary-content {
+      min-width: 320px;
+    }
+  }
+}

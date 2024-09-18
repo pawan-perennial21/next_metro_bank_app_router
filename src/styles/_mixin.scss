@@ -1,0 +1,14 @@
+@mixin flex-item(
+  $f-direction: row,
+  $horizontal: flex-start,
+  $vertical: flex-start,
+  $gap: 0px,
+  $wrap: nowrap
+) {
+  display: flex;
+  flex-direction: $f-direction;
+  justify-content: $horizontal;
+  align-items: $vertical;
+  gap: $gap;
+  flex-wrap: $wrap;
+}

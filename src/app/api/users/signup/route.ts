@@ -1,5 +1,5 @@
 import User from '@/models/userModel';
-import { connect } from '@/db/dbConfig';
+import { connect } from '@/config/db';
 import bcryptjs from 'bcryptjs';
 import { NextRequest } from 'next/server';
 import MyCustomError from '../utils/MyCustomError';

@@ -1,0 +1,18 @@
+.current-services {
+  width: 100%;
+  @include flex-item(column, normal, normal, 24px);
+  padding: 24px;
+  border-radius: 12px;
+  background: $white;
+  box-shadow: $card-box-shadow;
+
+  .current-services-details {
+    display: flex;
+    gap: 24px;
+
+    .current-services-content {
+      min-width: 218px;
+      @include flex-item(column,center,center,10px)
+    }
+  }
+}

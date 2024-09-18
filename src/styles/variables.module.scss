@@ -1,0 +1,31 @@
+// colors
+$primary-color: #d90429;
+$primary-light: #e8544b;
+$white: #fff;
+$text-clr: #1a1a1a;
+$secondary-white: #e0e0e0;
+$tertiary-white: #c4c4c4;
+$bg-modal: rgba(0, 0, 0, 0.5);
+$card-bg: #fff0f3;
+$secondary-text: #232f34;
+$gray: #828282;
+$success: #008000;
+$error: #ff0000;
+
+// shadows
+$btn-box-shadow: rgba(254, 45, 23, 0.3);
+$card-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+$paper-shadow: 0px 6px 7px -4px rgba(0, 0, 0, 0.2);
+
+// border-colors
+$border-clr: #e8e8e8;
+$border-clr-2: #f2f2f2;
+$card-border: rgba(217, 4, 41, 0.2);
+
+:export {
+  primaryColor: $primary-color;
+  gray: $gray;
+  success: $success;
+  error: $error;
+  secondaryText: $secondary-text;
+}
