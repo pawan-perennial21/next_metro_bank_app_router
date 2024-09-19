@@ -1,5 +1,5 @@
 import AuthWrapper from "@/shared/components/AuthImage";
-
+import "../../styles/main.scss";
 export default function AuthLayout({
     children,
 }: Readonly<{

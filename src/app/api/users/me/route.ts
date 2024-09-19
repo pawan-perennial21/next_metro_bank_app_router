@@ -8,7 +8,7 @@ import { getDataFromToken } from "@/utils/getDataFromToken";
 export async function GET(request: NextRequest) {
     try {
         const userId = await getDataFromToken(request);
-
+        console.log({ userId });
         const user = await User.findById(userId).select("-password");
 
         return SuccessResponse("User Get successfully", 200, user);
@@ -80,7 +80,7 @@ export async function PUT(request: NextRequest) {
 
             const token = jwt.sign(
                 tokenData,
-                process.env.SECRETE_TOKEN!,
+                process.env.SECRET_TOKEN!,
                 {
                     expiresIn: "1h",
                 }

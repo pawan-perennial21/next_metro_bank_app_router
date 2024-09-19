@@ -16,7 +16,7 @@ export const loginAction = async (
         },
         body: JSON.stringify(values),
     });
-  console.log({res})
+    console.log({ res });
     return res;
 };
 

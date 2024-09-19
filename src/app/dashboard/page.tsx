@@ -1,4 +1,4 @@
-import "../../styles/main.scss";
+
 import { DASHBOARD_TABS } from "@/shared/constants";
 import { Typography } from "@/shared/components";
 import ActiveLink from "@/shared/components/ActiveLink";

@@ -1,5 +1,5 @@
 import { FC } from "react";
-
+import "../../styles/main.scss";
 import { ILayout } from "@/shared/interface";
 import Navbar from "@/components/navbar";
 
