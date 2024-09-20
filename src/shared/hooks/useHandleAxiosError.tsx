@@ -44,7 +44,6 @@ const useHandleAxiosError = () => {
 
   const handleAxiosError = async (error: any) => {
     if (error.response) {
-      console.log({"=====>":error.response})
       const { message } = error.response?.data;
 
       if (message === "jwt expired") {

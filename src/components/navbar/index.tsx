@@ -25,11 +25,9 @@ const Navbar: FC = () => {
             const res = await getUserAction();
             setUserData(res.data.data);
         } catch (error: any) {
-            console.log({error})
             handleAxiosError(error);
         }
     };
-  
 
     useEffect(() => {
         getDetailsUser();
@@ -47,10 +45,7 @@ const Navbar: FC = () => {
                         >
                             Micro
                         </Typography>
-                        <Typography
-                            variant='h2'
-                            fontWeight='900'
-                        >
+                        <Typography variant='h2' fontWeight='900'>
                             Bank
                         </Typography>
                     </div>

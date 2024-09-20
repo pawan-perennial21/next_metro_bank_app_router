@@ -17,7 +17,7 @@ export const loginAction = async (
         },
         body: JSON.stringify(values),
     });
-    console.log({ res });
+
     return res;
 };
 
@@ -56,7 +56,7 @@ export const userDataAction = async (
 export const getUserAction = async (): Promise<AxiosResponse> => {
     const res = await axios.get("/api/users/me");
     return res;
-  };
+};
 export const logoutAction = async (): Promise<Response> => {
     const res = await fetch("/api/users/logout", {
         method: "GET",

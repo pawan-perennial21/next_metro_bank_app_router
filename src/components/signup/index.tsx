@@ -26,8 +26,8 @@ const SignUpForm: FC = () => {
     const onSubmit = async (values: ISignUpData) => {
         try {
             const res = await signUpAction(values);
-            console.log({ res });
-            // toast.success(res.data.message);
+            const data = await res.json();
+            toast.success(data.message);
             router.push(PATH.login);
         } catch (error: any) {
             toast.error(
