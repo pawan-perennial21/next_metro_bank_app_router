@@ -5,6 +5,7 @@ import {
     ILoginData,
     ISignUpData,
 } from "@/shared/interface";
+import axios, { AxiosResponse } from "axios";
 
 export const loginAction = async (
     values: ILoginData
@@ -46,13 +47,16 @@ export const userDataAction = async (
     return res;
 };
 
-export const getUserAction = async (): Promise<Response> => {
-    const res = await fetch("/api/users/me", {
-        method: "GET",
-    });
+// export const getUserAction = async (): Promise<Response> => {
+//     const res = await fetch("/api/users/me", {
+//         method: "GET",
+//     });
+//     return res;
+// };
+export const getUserAction = async (): Promise<AxiosResponse> => {
+    const res = await axios.get("/api/users/me");
     return res;
-};
-
+  };
 export const logoutAction = async (): Promise<Response> => {
     const res = await fetch("/api/users/logout", {
         method: "GET",

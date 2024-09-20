@@ -3,17 +3,18 @@ import { useState, useEffect, FC } from "react";
 
 import Link from "next/link";
 import { IUserData } from "@/shared/interface";
-import useHandleAxiosError from "@/shared/hooks/useHandleAxiosError";
+import useHandleFetchError from "@/shared/hooks/useHandleAxiosError";
 import { getUserAction } from "@/app/actions/action";
 import { PATH } from "@/shared/constants";
 import { Avatar, Typography } from "@/shared/components";
 import { DropIcon, Notify } from "@/shared/icons";
 import ProfileCard from "../profileCard";
+import { getInitials } from "@/utils/shortNameAvatar";
 
 const Navbar: FC = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [userData] = useState<IUserData>();
-    const handleAxiosError = useHandleAxiosError();
+    const [userData, setUserData] = useState<IUserData>();
+    const handleAxiosError = useHandleFetchError();
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -21,13 +22,14 @@ const Navbar: FC = () => {
 
     const getDetailsUser = async () => {
         try {
-          const res = await getUserAction();
-          console.log({res})
-            // setUserData(res.data.data);
+            const res = await getUserAction();
+            setUserData(res.data.data);
         } catch (error: any) {
+            console.log({error})
             handleAxiosError(error);
         }
     };
+  
 
     useEffect(() => {
         getDetailsUser();
@@ -39,7 +41,6 @@ const Navbar: FC = () => {
                 <Link href={PATH.dashboard} color='inherit'>
                     <div className='navbar-title'>
                         <Typography
-                            // className={orbitron.className}
                             variant='h2'
                             color='#D90429'
                             fontWeight='900'
@@ -47,7 +48,6 @@ const Navbar: FC = () => {
                             Micro
                         </Typography>
                         <Typography
-                            // className={orbitron.className}
                             variant='h2'
                             fontWeight='900'
                         >
@@ -69,9 +69,9 @@ const Navbar: FC = () => {
                 <div className='flex'>
                     <li>
                         <Avatar
-                            // initials={getInitials(
-                            //     userData?.fullName || ""
-                            // )}
+                            initials={getInitials(
+                                userData?.fullName || ""
+                            )}
                             size='37px'
                         />
                     </li>

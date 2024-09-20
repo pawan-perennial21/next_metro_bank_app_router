@@ -6,7 +6,7 @@ export async function getDataFromToken(request: NextRequest) {
 
     const decodedToken: any = jwt.verify(
         token,
-        process.env.SECRETE_TOKEN!
+        process.env.SECRET_TOKEN!
     );
 
     return decodedToken.id;

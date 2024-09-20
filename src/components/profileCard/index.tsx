@@ -7,6 +7,8 @@ import { IProfileCard } from "@/shared/interface";
 import { logoutAction } from "@/app/actions/action";
 import { PATH } from "@/shared/constants";
 import { Avatar, Typography } from "@/shared/components";
+import { getInitials } from "@/utils/shortNameAvatar";
+import toast from "react-hot-toast";
 
 //Local imports
 
@@ -20,8 +22,8 @@ const ProfileCard: FC<IProfileCard> = ({
 
     const handleLogout = async () => {
         const res = await logoutAction();
-        console.log({ res });
-        // toast.success(res.data.message);
+        const data = await res.json();
+        toast.success(data.message);
         router.push(PATH.login);
     };
 
@@ -32,7 +34,7 @@ const ProfileCard: FC<IProfileCard> = ({
                     <div className='profile-pic'>
                         <Avatar
                             size='80px'
-                            // initials={getInitials(fullName)}
+                            initials={getInitials(fullName)}
                             fontSize='30px'
                         />
                     </div>
@@ -48,12 +50,12 @@ const ProfileCard: FC<IProfileCard> = ({
                         target='_blank'
                     >
                         <Typography variant='h5'>
-                            gopimudumal99@gmail.com
+                            {email}
                         </Typography>
                     </Link>
                 </li>
                 <li className='dropdown-value pointer'>
-                    <Link href={"/editProfile"} className='a-text'>
+                    <Link href={"/dashboard/profile/edit"} className='a-text'>
                         <Typography variant='h6' fontWeight='400'>
                             Edit Profile
                         </Typography>

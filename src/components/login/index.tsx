@@ -41,9 +41,10 @@ const LoginForm = () => {
     const onSubmit = async (values: ILoginData) => {
         console.log({ values });
         try {
-            const data = await loginAction(values);
+            const res = await loginAction(values);
+            const data = await res.json()
             console.log({ data });
-            // toast.success(data.data.message);
+            toast.success(data.message);
             router.push(PATH.dashboard);
         } catch (error: any) {
             toast.error(

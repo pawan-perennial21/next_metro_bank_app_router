@@ -8,9 +8,7 @@ import { getDataFromToken } from "@/utils/getDataFromToken";
 export async function GET(request: NextRequest) {
     try {
         const userId = await getDataFromToken(request);
-        console.log({ userId });
         const user = await User.findById(userId).select("-password");
-
         return SuccessResponse("User Get successfully", 200, user);
     } catch (error: any) {
         return ErrorResponse(error.message, 500, error.stack);
