@@ -1,5 +1,4 @@
 "use client";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
@@ -9,37 +8,20 @@ import { signUpAction } from "@/app/actions/action";
 import { ISignUpData } from "@/shared/interface";
 import { Button, InputField, Typography } from "@/shared/components";
 import { PATH, SIGN_UP_FORM_FIELDS } from "@/shared/constants";
-
-const signUpSchema = z.object({
-    fullName: z.string().min(1, "Full name is required"),
-    email: z
-        .string()
-        .email("Invalid email format")
-        .min(1, "Email is required"),
-    password: z
-        .string()
-        .min(8, "Password must be at least 8 characters"),
-    confirmPassword: z
-        .string()
-        .min(8, "Please confirm your password"),
-    // .refine((data, context) => data === context.parent.password, {
-    //     message: "Passwords do not match",
-    // }),
-    dateOfIncorporation: z
-        .string()
-        .min(1, "Date of Incorporation is required"),
-});
+import { signUpSchema } from "@/utils/validationSchema";
 
 const SignUpForm: FC = () => {
     const router = useRouter();
+
+    const form = useForm<ISignUpData>({
+        resolver: zodResolver(signUpSchema),
+    });
 
     const {
         register,
         handleSubmit,
         formState: { errors, isSubmitting },
-    } = useForm<ISignUpData>({
-        resolver: zodResolver(signUpSchema),
-    });
+    } = form;
 
     const onSubmit = async (values: ISignUpData) => {
         try {
@@ -61,7 +43,6 @@ const SignUpForm: FC = () => {
         >
             {SIGN_UP_FORM_FIELDS.map(({ label, name, type }) => {
                 const fieldName = name as keyof ISignUpData; // Ensure `name` matches the fields in ILoginData
-                // console.log(fieldName);
                 return (
                     <InputField
                         key={name}

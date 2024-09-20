@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
-import * as z from "zod";
 
 //Local imports
 import {
@@ -15,34 +14,12 @@ import {
 import { EDIT_PROFILE_FIELDS, PATH } from "../../shared/constants";
 import { IEditProfile } from "@/shared/interface";
 import { userDataAction } from "@/app/actions/action";
-
-// Zod schema (replace this with your schema)
-const updateProfile = z.object({
-    companyName: z.string().min(1, "Company Name is required"),
-    email: z.string().email("Invalid email address"),
-    oldPassword: z
-        .string()
-        .min(6, "Old password must be at least 6 characters"),
-    newPassword: z
-        .string()
-        .min(6, "New password must be at least 6 characters"),
-    confirmPassword: z
-        .string()
-        .min(6, "Confirm password must be at least 6 characters")
-        // .refine(
-        //     (val, ctx) => val === ctx.parent.newPassword,
-        //     "Passwords must match"
-        // ),
-});
+import { updateProfile } from "@/utils/validationSchema";
 
 const Profile: FC = () => {
     const router = useRouter();
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting },
-    } = useForm<IEditProfile>({
+    const form = useForm<IEditProfile>({
         resolver: zodResolver(updateProfile),
         defaultValues: {
             companyName: "",
@@ -52,6 +29,12 @@ const Profile: FC = () => {
             confirmPassword: "",
         },
     });
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+    } = form;
 
     const handleUpdateProfile = async (values: IEditProfile) => {
         try {
