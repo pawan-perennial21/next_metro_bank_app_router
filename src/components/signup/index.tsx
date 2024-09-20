@@ -24,15 +24,14 @@ const SignUpForm: FC = () => {
     } = form;
 
     const onSubmit = async (values: ISignUpData) => {
-        try {
-            const res = await signUpAction(values);
-            const data = await res.json();
+        const res = await signUpAction(values);
+        const data = await res.json();
+        if (data.success) {
             toast.success(data.message);
             router.push(PATH.login);
-        } catch (error: any) {
-            toast.error(
-                error.response?.data?.message || error.message
-            );
+        }
+        if (!data.success) {
+            toast.error(data.message);
         }
     };
 

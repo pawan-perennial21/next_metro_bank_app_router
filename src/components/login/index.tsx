@@ -27,18 +27,15 @@ const LoginForm = () => {
     } = form;
 
     const onSubmit = async (values: ILoginData) => {
-        try {
-            const res = await loginAction(values);
-            const data = await res.json();
+        const res = await loginAction(values);
+        const data = await res.json();
 
-            if (data.success) {
-                toast.success(data.message);
-                router.push(PATH.dashboard);
-            }
-        } catch (error: any) {
-            toast.error(
-                error.response?.data?.message || error.message
-            );
+        if (data.success) {
+            toast.success(data.message);
+            router.push(PATH.dashboard);
+        }
+        if (!data.success) {
+            toast.error(data.message);
         }
     };
 

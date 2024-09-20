@@ -10,6 +10,6 @@
     background: $white;
     box-shadow: $paper-shadow;
     padding: 24px;
-    @include flex-item(column,normal,normal,24px);
+    @include flex-item(column,center,center,24px);
   }
 }
